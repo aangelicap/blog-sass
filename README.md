@@ -1,2 +1,2 @@
-# homepage
-Home page usando html e css
+# pets
+blog using sass
