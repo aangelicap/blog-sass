@@ -1,11 +1,11 @@
-# pets petshop
+# Blog using sass
 
-blog using sass
+Practicing nesting and parent selector
 
-practicing nesting and parent selector
+Learn about BEM: Block, Element, Modifier
 
-metodologia BEM: bloco, elemento, modificador
-
+Element - block structure
+Modifier - states of elements and blocks
 
 `
 sass --watch scss/style.scss:css/style.css
