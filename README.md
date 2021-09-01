@@ -2,7 +2,7 @@
 
 blog using sass
 
-practicing nesting, parent selector
+practicing nesting and parent selector
 
 metodologia BEM: bloco, elemento, modificador
 
