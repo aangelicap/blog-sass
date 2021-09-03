@@ -12,23 +12,28 @@ $img-widht: 45%;
     padding: 0;
     list-style: none;
 }
-
 @mixin for-phone-only {
     @media (max-width: 767.98px) {
         @content;
     }
 }
-
 @mixin for-tablet-only {
     @media (min-width: 768px) and (max-width: 1199.99) {
         @content;
     }
 }
-
 @mixin for-desktop-only {
     @media (min-width: 1200px) {
         @content;
     }
+}
+
+@function calculateRem($size: 14px){
+    @return $size / 16px * 1rem;
+}
+
+@mixin fontSize($size){
+    font-size: calculateRem($size);
 }
 
 
@@ -73,6 +78,10 @@ $img-widht: 45%;
         &__links {
             position: relative;
 
+            @include for-phone-only(){
+                padding: 5px 0;
+            }
+
             &:not(last-child):after{
                 content: "";
                 position: absolute;
@@ -107,6 +116,10 @@ $img-widht: 45%;
     &__content {
         width: 70%;
         padding: 40px 8px;
+
+        @include for-phone-only(){
+            width: 100%;
+        }  
     }
 
     &__post {
@@ -118,10 +131,9 @@ $img-widht: 45%;
 
     &__title {
         text-decoration: none;
-        font-size: 22px;
+        @include fontSize(22px);
         color: $dark-grey;
         letter-spacing: 1.5;
-
         &:hover{
             color: $purple;
         }
@@ -136,13 +148,13 @@ $img-widht: 45%;
 
     &__date {
         margin: 0 10px;
-        font-size: 12px;
+        @include fontSize(12px);
         font-style: italic;
         padding: 7px 7px;
     }
 
     &__tag {
-        font-size: 14px;
+        @include fontSize(14px);
         padding: 5px 7px;
         color: $purple;
         border: 1px solid $purple;
@@ -162,12 +174,12 @@ $img-widht: 45%;
         max-width: 650px;
         margin-left: auto;
         margin-right: auto;
-        font-size: 14px;
+        @include fontSize(14px);
     }
 
     &__btn {
         text-decoration: none;
-        font-size: 16px;
+        @include fontSize(16px);
         letter-spacing: 1.5px;
         color: $purple;
         background-color: $yellow;
@@ -194,7 +206,8 @@ $img-widht: 45%;
     }
 
     &__p {
-        font-size: 14px $dark-grey;
+        @include fontSize(12px);
+        color: $dark-grey;
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -205,7 +218,8 @@ $img-widht: 45%;
 
     &__a {
         text-decoration: none;
-        font-size: 14px $dark-grey;
+        @include fontSize(12px);
+        color: $dark-grey;
         margin-top: 10px;
         margin-bottom: 10px;
 
@@ -251,16 +265,15 @@ $img-widht: 45%;
             padding-left: 10px;
         }
         &__post-title {
-            font-size: 14px;
+            @include fontSize(14px);
             color: $purple;
             @extend %no-decoretion;
-
             &:hover{
                 @extend %u-decoretion;
             }
         }
         &__post-date {
-            font-size: 12px;
+            @include fontSize(12px);
             margin: 5px 0 0 0;
         }
     }
@@ -271,6 +284,10 @@ $img-widht: 45%;
     margin: 0 auto 40px;
     font-family: Arial, Helvetica, sans-serif;
 
+    @include for-phone-only() {   
+        width: 90%;
+    }
+
     &__title {
         background-color: $light-grey;
         text-align: center;
@@ -278,7 +295,7 @@ $img-widht: 45%;
     }
 
     &__h1 {
-        font-size: 22px;
+        @include fontSize(22px);
         color: $dark-grey;
         letter-spacing: 1px;
         margin-top: 5px;
@@ -293,7 +310,7 @@ $img-widht: 45%;
         align-items: center;
 
         &__link {
-            font-size: 12px;
+            @include fontSize(12px);
             text-decoration: none;
             color: $dark-grey;
             :hover{
@@ -319,7 +336,14 @@ $img-widht: 45%;
         color: $dark-grey;
         margin: 30px auto;
         text-align: center;
-        font-size: 16px;
+        @include fontSize(16px);
+
+        @include for-phone-only() {   
+            width: 90%;
+        }
+        @include for-tablet-only() {   
+            width: 80%;
+        }
     }
 
     &__split {
@@ -331,14 +355,23 @@ $img-widht: 45%;
 
     &__img-description {
         width: $img-widht;
+
+        @include for-phone-only {   
+            width: 80%;
+        }
     }
 
     &__txt {
         width: calc(100% - #{ $img-widht });
+
+        @include for-phone-only() {   
+            width: 90%;
+            text-align: center;
+        }
     }
 
     &__p {
-        font-size: 14px;
+        @include fontSize(14px);
         padding: 10px 20px;
         color: $dark-grey;
     }
@@ -362,7 +395,6 @@ $img-widht: 45%;
 
     &_txt {
         margin: auto;
-        font-size: 14px;
-    
+        @include fontSize(14px);    
     }
 }
